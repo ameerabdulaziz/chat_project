@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+    <h2>{{ username }}</h2>
+    <div id="messageCanvas"></div>
+    <form action="{% url 'chat' %}" method="post" id="Chatform">{% csrf_token %}
+        <input type="hidden" name="username" value="{{ username }}">
+        <input type="text" name="message" placeholder="Enter your message ...">
+        <button type="submit" class="btn">Send</button>
+    </form>
+{% endblock %}
+
+{% block plugin %}
+    <script src="{% static 'js/plugin.js' %}"></script>
+{% endblock %}
